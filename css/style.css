@@ -19,3 +19,9 @@ body {
 	margin-right:0;
 	text-align:left;
 }
+
+#footer {
+	font-size:smaller;
+	text-align:center;
+    vertical-align:sub;
+}
