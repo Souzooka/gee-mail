@@ -9,24 +9,14 @@ body {
 }
 
 #unreadMsg em{
-	font-size:130%;
-	
+	font-size:130%;	
 }
 
 /* Frame w/ scrollbar? */
+/* How do you align this to the right of the page? */
 #msgContainer {
 	background-color: #FFFFFF;
-}
-
-.message {
-	display:none;
 	margin-right:0;
 	text-align:right;
-}
-
-/* Why won't the lines align without this? */
-.message hr{
-
-	margin-right:0;
-	text-align:right;
+	width: 50%;
 }
