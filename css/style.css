@@ -2,10 +2,19 @@ body {
 	background-color: #EEEEEE;
 }
 
+#header {
+	position:fixed;
+	top:0;
+}
+
 #unreadMsg {
 	background-color: #CCCCFF;
 	font-family: Monospace;
 	font-size:120%;
+	margin-left:0;
+	margin-right:calc(100% - 195px);
+	position:fixed;
+	top:100;
 }
 
 #unreadMsg em{
@@ -22,6 +31,8 @@ body {
 
 #footer {
 	font-size:smaller;
-	text-align:center;
+	text-align:left;
     vertical-align:sub;
+	position:fixed;
+	bottom:10;
 }

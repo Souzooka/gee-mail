@@ -5,6 +5,7 @@
 		<meta charset="UTF-8"> 
 		<title>GeeMail E-mail Client</title>
 		<script src="js/mail-generator.js"></script>
+		<script src="js/extra.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function(){
@@ -19,18 +20,15 @@
     </script>
 	</head>
 	<body>
+		<div id="header">
 		<img src="img/logo.png" alt="GeeMail!" width="100">
-		<hr/ align="left" width="200">
+		<hr/>
+		</div>
 			<div class="container" id="main">
 				<p id="unreadMsg"><strong>You have <em id="unreadMsgCount">0</em> unread message(s)!</strong></p>
 					<!-- Space for 12 messages, bottom 2 should be kept hidden if script generates 10 messages -->
 					<!-- list? -->
-					<!-- TODO: CSS: Scrollbar for inbox and different bg color? Maybe FFFFFF for inbox and EEEEEEE for rest of page -->
 					<div class="container" id="msgContainer">
-						<div id = "msgTop">
-						testtext
-						<hr/>
-						</div>
 						<div id = "msg1" class = "message">
 							<!-- Date, subject, sender, unread status goes here, show/hide msg button? -->
 							<p>1</p>
@@ -103,16 +101,16 @@
 								</div>						
 							<hr/>
 						</div>
-						<div id = "msg11" class = "message" >
+						<div id = "msg11" class = "message">
 							<p>11</p>
-								<div id = "msg11Body" class = "messageBody" >
+								<div id = "msg11Body" class = "messageBody">
 									<p>11body</p>
 								</div>						
 							<hr/>
 						</div>
-						<div id = "msg12" class = "message" >
+						<div id = "msg12" class = "message">
 							<p>12</p>
-								<div id = "msg12Body" class = "messageBody" >
+								<div id = "msg12Body" class = "messageBody">
 									<p>12body</p>
 								</div>						
 							<hr/>
