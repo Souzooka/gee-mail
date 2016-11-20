@@ -1,18 +1,79 @@
 <html>
 	<head>
+		<title>GeeMail E-mail Client</title>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+		
+		var date = getRandomDate();
+		var dateString = date.toString();
+		document.getElementById("main").innerHTML = dateString;
         
       };
     </script>
 	</head>
 	<body>
-		<div class="container" id="main">
-			Build Me!
-		</div>
+		<img src="img/logo.png" alt="GeeMail!" width="100">
+		<hr/ align="left" width="166">
+			<div class="container" id="main">
+				<p id="unreadMsg"><strong>You have <em id="unreadMsgCount">0</em> unread message(s)!</strong></p>
+					<!--- Space for 12 messages, bottom 2 should be kept hidden if script generates 10 messages -->
+					<div id = "msgTop">
+					<hr/>
+					</div>
+					<div id = "msg1" style="display:none;">
+						<p align="right">1</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg2" style="display:none;">
+						<p align="right">2</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg3" style="display:none;">
+						<p align="right">3</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg4" style="display:none;">
+						<p align="right">4</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg5" style="display:none;">
+						<p align="right">5</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg6" style="display:none;">
+						<p align="right">6</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg7" style="display:none;">
+						<p align="right">7</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg8" style="display:none;">
+						<p align="right">8</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg9" style="display:none;">
+						<p align="right">9</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg10" style="display:none;">
+						<p align="right">10</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg11" style="display:none;">
+						<p align="right">11</p>
+						<hr/ align="right" width="50%">
+					</div>
+					<div id = "msg12" style="display:none;">
+						<p align="right">12</p>
+						<hr/ align="right" width="50%">
+					</div>					
+			</div>
+			<div id = "footer">
+				<p><sub>Copyright 2013-2016 Geegle</sub></p>
 	</body>
 </html>
