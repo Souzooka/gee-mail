@@ -53,11 +53,30 @@ body {
 	position:fixed;
 	overflow-y:auto;
 	min-width:400px;
-	max-height:calc(100% - 107.5px);
-	min-height:calc(100% - 107.5px);
+	max-height:calc(100% - 108.8px);
+	min-height:calc(100% - 108.8px);
 	text-align:left;
-	top:107.5px;
+	top:108.8px;
 	width:calc(100% - 200px);
+}
+
+.message {
+	font: 14px/25px Helvetica, Arial, sans-serif;
+}
+
+.messageSubjectInner {
+	position:absolute;
+	left:66px;
+}
+
+.messageSenderInner {
+	position:absolute;
+	left:66px;
+}
+
+.messageDateInner {
+	position:absolute;
+	left:66px;
 }
 
 #footer {

@@ -49,7 +49,7 @@
 				if (loadedMsgs < maxInboxSize) {
 					var newMessage = document.createElement('div');
 					newMessage.className = "message";
-					newMessage.innerHTML = "<div class = 'messageSubject'>" + window.geemails[i].subject + " </div>" + "<div class = 'messageSender'>" + window.geemails[i].sender + "</div> " + "<div class = 'messageDate'>" + window.geemails[i].date + "</div>" + "<br/>" + "<div class = 'messageBody'>" + window.geemails[i].body + "<br/><hr/>";
+					newMessage.innerHTML = "<div class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + window.geemails[i].subject + "</span></div>" + "<div class = 'messageSender'>Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span></div>" + "<div class = 'messageDate'>Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span></div>" + "<br/>" + "<div class = 'messageBody'>" + window.geemails[i].body + "<br/><hr/>";
 					msgContainer.appendChild(newMessage);
 					incrementMsgCount();
 				}
@@ -62,7 +62,7 @@
 			if (loadedMsgs < maxInboxSize) {
 				var newMessage = document.createElement('div');
 				newMessage.className = "message";
-				newMessage.innerHTML = "<div class = 'messageSubject'>" + getNewMessage().subject + " </div>" + "<div class = 'messageSender'>" + getNewMessage().sender + "</div> " + "<div class = 'messageDate'>" + getNewMessage().date + "</div>" + "<br/>" + "<div class = 'messageBody'>" + getNewMessage().body + "<br/><hr/>";
+				newMessage.innerHTML = "<div class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + getNewMessage().subject + "</span></div>" + "<div class = 'messageSender'>Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span></div> " + "<div class = 'messageDate'>Date: <span class='messageDateInner'>" + getNewMessage().date + "</span></div>" + "<br/>" + "<div class = 'messageBody'>" + getNewMessage().body + "<br/><hr/>";
 				msgContainer.appendChild(newMessage);
 				incrementMsgCount();
 			}
