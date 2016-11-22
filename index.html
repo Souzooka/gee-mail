@@ -13,11 +13,46 @@
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 		
+
+		
+		
 		
 		// Unread Messages Count
-		var x = 0;
-		setInterval(function(){ x += 1; document.getElementById("unreadMsgCount").innerHTML = x;}, 1000);
-        
+		var initMessageCount = window.geemails.length;
+		var messageCount = initMessageCount;
+		updateMsgCount();
+		
+		
+		function updateMsgCount() {
+			document.getElementById("unreadMsgCount").innerHTML = messageCount;
+		}
+		
+		function incrementMsgCount() {
+			messageCount += 1;
+			updateMsgCount();
+		}
+		
+		function decrementMsgCount() {
+			messageCount -= 1;
+			updateMsgCount();
+		}
+		
+		function initAddMessage() {
+			for(var i = 0; i < initMessageCount; i++){
+			
+			var newMessage = document.createElement('div');
+			newMessage.classname = "message";
+			newMessage.innerHTML = window.geemails[i].subject;
+			msgContainer.appendChild(newMessage);
+			
+			}
+		}
+		
+		// Adds a new message at a random interval spanning 1 to 10 seconds
+		setInterval(addMessage, (Math.random() * 9000) + 1000);
+		function addMessage() {
+			incrementMsgCount()
+		}
       };
     </script>
 	</head>
@@ -49,7 +84,7 @@
 						<!-- Message Body goes here -->
 						<p>Message Body</p>
 					</div>
-					<hr/>
+					<hr/ id="msgContainerEnd">
 				</div>
 			</div>
 			
