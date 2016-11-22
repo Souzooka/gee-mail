@@ -50,22 +50,22 @@
 					var newMessage = document.createElement('div');
 					newMessage.className = "message";
 					// Create the content of the message, including classes for anything which needs specific styles.
-					newMessage.innerHTML = "<span class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + window.geemails[i].subject + "</span></span>" + "<span class = 'messageSender'>Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span></span>" + "<span class = 'messageDate'>Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span></span>" + "<br/>" + "<span class = 'messageBody'>" + window.geemails[i].body + "<br/><hr/>";
+					newMessage.innerHTML = "<button class='msgButton' onclick='myFunction()'>Show/Hide Message</button><span class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + window.geemails[i].subject + "</span></span>" + "<span class = 'messageSender'>Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span></span>" + "<span class = 'messageDate'>Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span></span>" + "<br/>" + "<span class = 'messageBody'><br/>" + window.geemails[i].body + "</span><hr/>";
 					msgContainer.appendChild(newMessage);
 					// Update inbox count
 					incrementMsgCount();
 				}
 			}
 		}
-		
-		// Adds a new message at a random interval spanning 1 to 10 seconds, until we reach maxInboxSize.
-		setInterval(addMessage, (Math.random() * 9000) + 1000);
+
+		// Adds a new message at a random interval spanning 1 to 10 seconds (this is set only once), until we reach maxInboxSize.
+		setInterval(addMessage, ((Math.random() * 9000) + 1000));
 		function addMessage() {
 			if (loadedMsgs < maxInboxSize) {
 				var newMessage = document.createElement('div');
 				newMessage.className = "message";
 				// Create the content of the message, including classes for anything which needs specific styles.
-				newMessage.innerHTML = "<span class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + getNewMessage().subject + "</span></span>" + "<span class = 'messageSender'>Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span></span> " + "<span class = 'messageDate'>Date: <span class='messageDateInner'>" + getNewMessage().date + "</span></span>" + "<br/>" + "<span class = 'messageBody'>" + getNewMessage().body + "<br/><hr/>";
+				newMessage.innerHTML = "<button class='msgButton' onclick='myFunction()'>Show/Hide Message</button><span class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + getNewMessage().subject + "</span></span>" + "<span class = 'messageSender'>Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span></span> " + "<span class = 'messageDate'>Date: <span class='messageDateInner'>" + getNewMessage().date + "</span></span>" + "<br/>" + "<span class = 'messageBody'>" + getNewMessage().body + "</span><hr/>";
 				msgContainer.appendChild(newMessage);
 				// Update inbox count
 				incrementMsgCount();
