@@ -53,7 +53,7 @@ body {
 	position:fixed;
 	overflow-y:auto;
 	min-width:400px;
-	max-height:calc(100% - 115.5px);
+	max-height:calc(100% - 107.5px);
 	text-align:left;
 	top:107.5px;
 	width:calc(100% - 200px);
