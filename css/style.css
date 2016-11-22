@@ -85,7 +85,7 @@ body {
 	min-width:180px;
 	max-width:180px;
 	overflow:hidden;
-	left:425px;
+	left:525px;
 	font-weight:bold;
 }
 
@@ -98,7 +98,7 @@ body {
 .messageDate {
 	position:absolute;
 	min-width:1000px;
-	left:600px;
+	left:700px;
 	font-weight:bold;
 }
 
@@ -161,7 +161,8 @@ input#nightMode:checked + .main > #headerImg {
 
 input#nightMode:checked + .main {
 	background-color: #222222;
-	
+	width:110%;
+	height:110%;
 }
 
 /* ???????? */

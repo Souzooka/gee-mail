@@ -22,7 +22,7 @@
 		var UnreadMessageCount = 0;
 		var loadedMsgs = 0;
 		var maxInboxSize = 25;
-		console.log(getNewMessage());
+		console.log(getNewMessage().date)
 		updateMsgCount();
 		initAddMessage();
 		
@@ -34,8 +34,6 @@
 		function incrementMsgCount() {
 			UnreadMessageCount += 1;
 			loadedMsgs += 1;
-			console.log(UnreadMessageCount);
-			console.log(loadedMsgs);
 			updateMsgCount();
 		}
 		
@@ -44,16 +42,22 @@
 			updateMsgCount();
 		}
 		
+		function preShowHideMessage(element) {
+			var something = element;
+			alert(element);
+		}
+		
 		function initAddMessage() {
 			for(var i = 0; i < initMessageCount; i++){
 				if (loadedMsgs < maxInboxSize) {
+					// Update inbox count
+					incrementMsgCount();
 					var newMessage = document.createElement('div');
 					newMessage.className = "message";
 					// Create the content of the message, including classes for anything which needs specific styles.
-					newMessage.innerHTML = "<button class='msgButton' onclick='myFunction()'>Show/Hide Message</button><span class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + window.geemails[i].subject + "</span></span>" + "<span class = 'messageSender'>Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span></span>" + "<span class = 'messageDate'>Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span></span>" + "<br/>" + "<span class = 'messageBody'><br/>" + window.geemails[i].body + "</span><hr/>";
+					newMessage.innerHTML = "<button class='msgButton' id='msgShowButton" + loadedMsgs + "'onclick='document.getElementById(&#39;messageBody" + loadedMsgs + "&#39;).style.display=&#39;initial&#39;'>Show Message</button><button class='msgButton' id='msgHideButton" + loadedMsgs + "'onclick='document.getElementById(&#39;messageBody" + loadedMsgs + "&#39;).style.display=&#39;none&#39;'>Hide Message</button><span class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + window.geemails[i].subject + "</span></span>" + "<span class = 'messageSender'>Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span></span>" + "<span class = 'messageDate'>Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span></span>" + "<br/>" + "<span class='messageBody' id='messageBody" + loadedMsgs + "'>" + window.geemails[i].body + "</span><hr/>";
 					msgContainer.appendChild(newMessage);
-					// Update inbox count
-					incrementMsgCount();
+
 				}
 			}
 		}
@@ -62,15 +66,17 @@
 		setInterval(addMessage, ((Math.random() * 9000) + 1000));
 		function addMessage() {
 			if (loadedMsgs < maxInboxSize) {
+				// Update inbox count
+				incrementMsgCount();
 				var newMessage = document.createElement('div');
 				newMessage.className = "message";
 				// Create the content of the message, including classes for anything which needs specific styles.
-				newMessage.innerHTML = "<button class='msgButton' onclick='myFunction()'>Show/Hide Message</button><span class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + getNewMessage().subject + "</span></span>" + "<span class = 'messageSender'>Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span></span> " + "<span class = 'messageDate'>Date: <span class='messageDateInner'>" + getNewMessage().date + "</span></span>" + "<br/>" + "<span class = 'messageBody'>" + getNewMessage().body + "</span><hr/>";
+				newMessage.innerHTML = "<button class='msgButton' id='msgShowButton" + loadedMsgs + "'onclick='document.getElementById(&#39;messageBody" + loadedMsgs + "&#39;).style.display=&#39;initial&#39;'>Show Message</button><button class='msgButton' id='msgHideButton" + loadedMsgs + "'onclick='document.getElementById(&#39;messageBody" + loadedMsgs + "&#39;).style.display=&#39;none&#39;'>Hide Message</button><span class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + getNewMessage().subject + "</span></span>" + "<span class = 'messageSender'>Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span></span> " + "<span class = 'messageDate'>Date: <span class='messageDateInner'>" + getNewMessage().date + "</span></span>" + "<br/>" + "<span class='messageBody' id='messageBody" + loadedMsgs + "'>" + getNewMessage().body + "</span><hr/>";
 				msgContainer.appendChild(newMessage);
-				// Update inbox count
-				incrementMsgCount();
 			}
 		}
+		
+
       };
     </script>
 	</head>
