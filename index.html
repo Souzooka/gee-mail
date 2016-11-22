@@ -49,7 +49,7 @@
 				if (loadedMsgs < maxInboxSize) {
 					var newMessage = document.createElement('div');
 					newMessage.className = "message";
-					newMessage.innerHTML = "<div class = 'messageSubject'>" + window.geemails[i].subject + " </div>" + "<div class = 'messageSender'>" + window.geemails[i].sender + "</div> " + "<div class = 'messageDate'>" + window.geemails[i].date + "</div>" + "<br/>" + "<div class = 'messageBody'>" + window.geemails[i].body + "<br/>" + "<br/>";
+					newMessage.innerHTML = "<div class = 'messageSubject'>" + window.geemails[i].subject + " </div>" + "<div class = 'messageSender'>" + window.geemails[i].sender + "</div> " + "<div class = 'messageDate'>" + window.geemails[i].date + "</div>" + "<br/>" + "<div class = 'messageBody'>" + window.geemails[i].body + "<br/><hr/>";
 					msgContainer.appendChild(newMessage);
 					incrementMsgCount();
 				}
@@ -62,7 +62,7 @@
 			if (loadedMsgs < maxInboxSize) {
 				var newMessage = document.createElement('div');
 				newMessage.className = "message";
-				newMessage.innerHTML = "<div class = 'messageSubject'>" + getNewMessage().subject + " </div>" + "<div class = 'messageSender'>" + getNewMessage().sender + "</div> " + "<div class = 'messageDate'>" + getNewMessage().date + "</div>" + "<br/>" + "<div class = 'messageBody'>" + getNewMessage().body + "<br/>" + "<br/>";
+				newMessage.innerHTML = "<div class = 'messageSubject'>" + getNewMessage().subject + " </div>" + "<div class = 'messageSender'>" + getNewMessage().sender + "</div> " + "<div class = 'messageDate'>" + getNewMessage().date + "</div>" + "<br/>" + "<div class = 'messageBody'>" + getNewMessage().body + "<br/><hr/>";
 				msgContainer.appendChild(newMessage);
 				incrementMsgCount();
 			}
@@ -87,17 +87,6 @@
 			<p id="unreadMsg"><strong>You have <em id="unreadMsgCount">0</em> unread message(s)!</strong></p>
 						
 			<div id="msgContainer">
-				<div class = "message">
-					<div class = "messageHead">
-						<!-- Date, subject, sender, unread status goes here, show/hide msg button? -->
-						Read status ----- Sender - Subject - Date (month/day?)
-					</div>
-					<div class = "messageBody">
-						<!-- Message Body goes here -->
-						<p>Message Body</p>
-					</div>
-					<hr/ id="msgContainerEnd">
-				</div>
 			</div>
 			
 		</div>
