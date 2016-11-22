@@ -64,19 +64,40 @@ body {
 	font: 14px/25px Helvetica, Arial, sans-serif;
 }
 
+.messageSubject {
+	position:absolute;
+	min-width:280px;
+	max-width:280px;
+	overflow:hidden;
+}
+
 .messageSubjectInner {
 	position:absolute;
-	left:66px;
+	left:55px;
+}
+
+.messageSender {
+	position:absolute;
+	min-width:180px;
+	max-width:180px;
+	overflow:hidden;
+	left:300px;
 }
 
 .messageSenderInner {
 	position:absolute;
-	left:66px;
+	left:54px;
+}
+
+.messageDate {
+	position:absolute;
+	min-width:1000px;
+	left:500px;
 }
 
 .messageDateInner {
 	position:absolute;
-	left:66px;
+	left:39px;
 }
 
 #footer {

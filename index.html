@@ -50,7 +50,7 @@
 					var newMessage = document.createElement('div');
 					newMessage.className = "message";
 					// Create the content of the message, including classes for anything which needs specific styles.
-					newMessage.innerHTML = "<div class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + window.geemails[i].subject + "</span></div>" + "<div class = 'messageSender'>Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span></div>" + "<div class = 'messageDate'>Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span></div>" + "<br/>" + "<div class = 'messageBody'>" + window.geemails[i].body + "<br/><hr/>";
+					newMessage.innerHTML = "<span class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + window.geemails[i].subject + "</span></span>" + "<span class = 'messageSender'>Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span></span>" + "<span class = 'messageDate'>Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span></span>" + "<br/>" + "<span class = 'messageBody'>" + window.geemails[i].body + "<br/><hr/>";
 					msgContainer.appendChild(newMessage);
 					// Update inbox count
 					incrementMsgCount();
@@ -65,7 +65,7 @@
 				var newMessage = document.createElement('div');
 				newMessage.className = "message";
 				// Create the content of the message, including classes for anything which needs specific styles.
-				newMessage.innerHTML = "<div class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + getNewMessage().subject + "</span></div>" + "<div class = 'messageSender'>Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span></div> " + "<div class = 'messageDate'>Date: <span class='messageDateInner'>" + getNewMessage().date + "</span></div>" + "<br/>" + "<div class = 'messageBody'>" + getNewMessage().body + "<br/><hr/>";
+				newMessage.innerHTML = "<span class = 'messageSubject'>Subject: <span class='messageSubjectInner'>" + getNewMessage().subject + "</span></span>" + "<span class = 'messageSender'>Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span></span> " + "<span class = 'messageDate'>Date: <span class='messageDateInner'>" + getNewMessage().date + "</span></span>" + "<br/>" + "<span class = 'messageBody'>" + getNewMessage().body + "<br/><hr/>";
 				msgContainer.appendChild(newMessage);
 				// Update inbox count
 				incrementMsgCount();
