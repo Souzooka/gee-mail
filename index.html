@@ -13,9 +13,10 @@
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 		
-		var date = getRandomDate();
-		var dateString = date.toString();
-		document.getElementById("main").innerHTML = dateString;
+		
+		// Unread Messages Count
+		var x = 0;
+		setInterval(function(){ x += 1; document.getElementById("unreadMsgCount").innerHTML = x;}, 1000);
         
       };
     </script>
@@ -39,14 +40,13 @@
 			<!-- Can we add more message templates through JS? -->
 			
 			<div id="msgContainer">
-				<hr/>
 				<div class = "message">
 					<div class = "messageHead">
 						<!-- Date, subject, sender, unread status goes here, show/hide msg button? -->
 						Read status ----- Sender - Subject - Date (month/day?)
 					</div>
 					<div class = "messageBody">
-						<!-- Message should be shown here when this element is unhidden, shouldn't be visible if msg1 is hidden -->
+						<!-- Message Body goes here -->
 						<p>Message Body</p>
 					</div>
 					<hr/>
@@ -54,8 +54,9 @@
 			</div>
 			
 		</div>
-		<!-- NOTE: Find way to prevent this from going up too high on page -->
+		
 		<div id = "footer">
+			<!-- NOTE: Find way to prevent this from going up too high on page -->
 			<p><sub>Copyright 2013-2016 <a href="https://github.com/Souzooka/">Geegle</a></sub></p>
 		</div>
 		
