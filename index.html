@@ -18,40 +18,47 @@
 		
 		
 		// Unread Messages Count
-		var initMessageCount = window.geemails.length;
-		var messageCount = initMessageCount;
+		var UnreadMessageCount = 0;
+		var loadedMsgs = 0;
+		var maxInboxSize = 25;
 		updateMsgCount();
 		
 		
 		function updateMsgCount() {
-			document.getElementById("unreadMsgCount").innerHTML = messageCount;
+			document.getElementById("unreadMsgCount").innerHTML = UnreadMessageCount.toLocaleString();
 		}
 		
 		function incrementMsgCount() {
-			messageCount += 1;
+			UnreadMessageCount += 1;
+			loadedMsgs += 1;
+			console.log(UnreadMessageCount);
+			console.log(loadedMsgs);
 			updateMsgCount();
 		}
 		
 		function decrementMsgCount() {
-			messageCount -= 1;
+			UnreadMessageCount -= 1;
 			updateMsgCount();
 		}
 		
 		function initAddMessage() {
 			for(var i = 0; i < initMessageCount; i++){
-			
-			var newMessage = document.createElement('div');
-			newMessage.classname = "message";
-			newMessage.innerHTML = window.geemails[i].subject;
-			msgContainer.appendChild(newMessage);
-			
+				if (loadedMsgs < maxInboxSize) {
+					var newMessage = document.createElement('div');
+					newMessage.classname = "message";
+					newMessage.innerHTML = window.geemails[i].subject;
+					msgContainer.appendChild(newMessage);
+					incrementMsgCount();
+				}
 			}
 		}
 		
-		// Adds a new message at a random interval spanning 1 to 10 seconds
+		// Adds a new message at a random interval spanning 1 to 10 seconds, until we reach maxInboxSize.
 		setInterval(addMessage, (Math.random() * 9000) + 1000);
 		function addMessage() {
-			incrementMsgCount();
+			if (loadedMsgs < maxInboxSize) {
+				incrementMsgCount();
+			}
 		}
       };
     </script>
@@ -71,9 +78,7 @@
 		
 		<div id="mainBody">
 			<p id="unreadMsg"><strong>You have <em id="unreadMsgCount">0</em> unread message(s)!</strong></p>
-			<!-- OLD: Space for 12 messages, bottom 2 should be kept hidden if script generates 10 messages -->
-			<!-- Can we add more message templates through JS? -->
-			
+						
 			<div id="msgContainer">
 				<div class = "message">
 					<div class = "messageHead">
