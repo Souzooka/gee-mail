@@ -1,11 +1,32 @@
 body {
 	background-color: #EEEEEE;
+	overflow:hidden;
+}
+
+.main {
+	background-color: #EEEEEE;
+	height:100%;
+	width:100%;
+	padding:8px;
+	position:relative;
+	bottom:8px;
+	right:8px;
 	
 }
 
-#header {
+#headerImg {
+	background-image: url("img/Logo.png");
+	background-repeat: no-repeat;
+	background-size: 100px 88px;
 	position:fixed;
-	top:15px;
+	top:8px;
+	height:100px;
+	width:114px;
+}
+
+#headerEnd {
+	position:fixed;
+	top:93px;
 	width:100%;
 }
 
@@ -16,7 +37,7 @@ body {
 	margin-left:0;
 	margin-right:calc(100% - 195px);
 	position:fixed;
-	top:100px;
+	top:93px;
 }
 
 #unreadMsg em{
@@ -34,7 +55,7 @@ body {
 	min-width:400px;
 	max-height:calc(100% - 115.5px);
 	text-align:left;
-	top:115.5px;
+	top:107.5px;
 	width:calc(100% - 200px);
 }
 
@@ -45,3 +66,67 @@ body {
 	position:fixed;
 	bottom:-8;
 }
+
+/* Night Mode */
+/* init */
+input#nightMode {
+	position: absolute;
+	top: -42px;
+	left: -42px;
+}
+
+label {
+	display: block;
+	border-style: solid;
+	border-width: 1px;
+	height: 25px;
+	width: 120px;
+	background: #EEEEEE;
+	text-align: center;
+	font: 14px/25px Helvetica, Arial, sans-serif;
+	position: fixed;
+	top: 69px;
+	left: 199px;
+	z-index: 1;
+}
+
+label:after {
+	content: " Toggle";
+}
+
+label:hover {
+	background: #DDCA7E;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+/* Switched on */
+
+input#nightMode:checked + .main > #headerImg {
+	background-image: url("img/LogoNight.png");
+}
+
+input#nightMode:checked + .main {
+	background-color: #222222;
+	
+}
+
+/* ???????? */
+input#nightMode:checked + .main > #msgContainer {
+	background-color: #777777;
+	color: #0000FF;
+}
+
+input#nightMode:checked + .main > #unreadMsg {
+	background-color: #111122;
+	color: #000000;
+}
+input#nightMode:checked + .main > #footer {
+	color: #DDCA7E;
+}
+
+
+
+
+
+/* Night Mode End */

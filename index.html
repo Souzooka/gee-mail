@@ -19,30 +19,41 @@
       };
     </script>
 	</head>
+	
 	<body>
-		<div id="header">
-		<img src="img/logo.png" alt="GeeMail!" width="100">
-		<hr/>
+	<label id for="nightMode">Night Mode</label>
+	<input type="checkbox" id="nightMode">
+	
+	<div class="main">
+		
+		<div id="headerImg">
 		</div>
-			<div class="container" id="main">
-				<p id="unreadMsg"><strong>You have <em id="unreadMsgCount">0</em> unread message(s)!</strong></p>
-					<!-- OLD: Space for 12 messages, bottom 2 should be kept hidden if script generates 10 messages -->
-					<!-- Can we add more message templates through JS? -->
-					<div class="container" id="msgContainer">
-						<div class = "message">
-							<!-- Date, subject, sender, unread status goes here, show/hide msg button? -->
-							<p>Read status ----- Sender - Subject - Date (month/day?)</p>
-								<div class = "messageBody">
-									<!-- Message should be shown here when this element is unhidden, shouldn't be visible if msg1 is hidden -->
-									<p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p>
-								</div>
-							<hr/>
+		
+		<hr/ id="headerEnd">
+		
+		<div id="mainBody">
+			<p id="unreadMsg"><strong>You have <em id="unreadMsgCount">0</em> unread message(s)!</strong></p>
+			<!-- OLD: Space for 12 messages, bottom 2 should be kept hidden if script generates 10 messages -->
+			<!-- Can we add more message templates through JS? -->
+			
+			<div id="msgContainer">
+				<div class = "message">
+						<!-- Date, subject, sender, unread status goes here, show/hide msg button? -->
+						Read status ----- Sender - Subject - Date (month/day?)
+						<div class = "messageBody">
+							<!-- Message should be shown here when this element is unhidden, shouldn't be visible if msg1 is hidden -->
+							<p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p><p>Message Body</p>
 						</div>
-					</div>
+						<hr/>
+				</div>
 			</div>
-			<!-- NOTE: Find way to prevent this from going up too high on page -->
-			<div id = "footer">
-				<p><sub>Copyright 2013-2016 <a href="https://github.com/Souzooka/">Geegle</a></sub></p>
-			</div>
+			
+		</div>
+		<!-- NOTE: Find way to prevent this from going up too high on page -->
+		<div id = "footer">
+			<p><sub>Copyright 2013-2016 <a href="https://github.com/Souzooka/">Geegle</a></sub></p>
+		</div>
+		
+	</div>
 	</body>
 </html>
