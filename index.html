@@ -22,6 +22,7 @@
 		var UnreadMessageCount = 0;
 		var loadedMsgs = 0;
 		var maxInboxSize = 25;
+		console.log(getNewMessage());
 		updateMsgCount();
 		initAddMessage();
 		
@@ -46,10 +47,10 @@
 		function initAddMessage() {
 			for(var i = 0; i < initMessageCount; i++){
 				if (loadedMsgs < maxInboxSize) {
-				//	var newMessage = document.createElement('div');
-				//	newMessage.classname = "message";
-				//	newMessage.innerHTML = window.geemails[i].subject;
-				//	msgContainer.appendChild(newMessage);
+					var newMessage = document.createElement('div');
+					newMessage.classname = "message";
+					newMessage.innerHTML = "<div class = 'messageSubject'>" + window.geemails[i].subject + " </div>" + "<div class = 'messageSender'>" + window.geemails[i].sender + "</div> " + "<div class = 'messageDate'>" + window.geemails[i].date + "</div>" + "<br/>" + "<div class = 'messageBody'>" + window.geemails[i].body + "<br/>" + "<br/>";
+					msgContainer.appendChild(newMessage);
 					incrementMsgCount();
 				}
 			}
@@ -59,6 +60,10 @@
 		setInterval(addMessage, (Math.random() * 9000) + 1000);
 		function addMessage() {
 			if (loadedMsgs < maxInboxSize) {
+				var newMessage = document.createElement('div');
+				newMessage.classname = "message";
+				newMessage.innerHTML = "<div class = 'messageSubject'>" + getNewMessage().subject + " </div>" + "<div class = 'messageSender'>" + getNewMessage().sender + "</div> " + "<div class = 'messageDate'>" + getNewMessage().date + "</div>" + "<br/>" + "<div class = 'messageBody'>" + getNewMessage().body + "<br/>" + "<br/>";
+				msgContainer.appendChild(newMessage);
 				incrementMsgCount();
 			}
 		}
