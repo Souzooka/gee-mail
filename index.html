@@ -18,10 +18,12 @@
 		
 		
 		// Unread Messages Count
+		var initMessageCount = window.geemails.length;
 		var UnreadMessageCount = 0;
 		var loadedMsgs = 0;
 		var maxInboxSize = 25;
 		updateMsgCount();
+		initAddMessage();
 		
 		
 		function updateMsgCount() {
@@ -44,10 +46,10 @@
 		function initAddMessage() {
 			for(var i = 0; i < initMessageCount; i++){
 				if (loadedMsgs < maxInboxSize) {
-					var newMessage = document.createElement('div');
-					newMessage.classname = "message";
-					newMessage.innerHTML = window.geemails[i].subject;
-					msgContainer.appendChild(newMessage);
+				//	var newMessage = document.createElement('div');
+				//	newMessage.classname = "message";
+				//	newMessage.innerHTML = window.geemails[i].subject;
+				//	msgContainer.appendChild(newMessage);
 					incrementMsgCount();
 				}
 			}
