@@ -69,11 +69,13 @@ body {
 	min-width:280px;
 	max-width:280px;
 	overflow:hidden;
+	font-weight:bold;
 }
 
 .messageSubjectInner {
 	position:absolute;
-	left:55px;
+	left:58px;
+	font-weight:normal;
 }
 
 .messageSender {
@@ -82,22 +84,26 @@ body {
 	max-width:180px;
 	overflow:hidden;
 	left:300px;
+	font-weight:bold;
 }
 
 .messageSenderInner {
 	position:absolute;
-	left:54px;
+	left:55px;
+	font-weight:normal;
 }
 
 .messageDate {
 	position:absolute;
 	min-width:1000px;
 	left:500px;
+	font-weight:bold;
 }
 
 .messageDateInner {
 	position:absolute;
-	left:39px;
+	left:38px;
+	font-weight:normal;
 }
 
 #footer {
