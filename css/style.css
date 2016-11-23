@@ -162,7 +162,7 @@ label:hover {
 }
 
 /* Switched on */
-input#nightMode:checked + .main > #headerImg {
+input#nightMode:checked + .main  #headerImg {
 	background-image: url("img/LogoNight.png");
 }
 
@@ -172,17 +172,16 @@ input#nightMode:checked + .main {
 	height:110%;
 }
 
-/* ???????? */
-input#nightMode:checked + .main > #msgContainer {
-	background-color: #777777;
-	color: #0000FF;
+input#nightMode:checked + .main  #msgContainer {
+	background-color: #2F2F2F;
+	color: #DDCA7E;
 }
 
-input#nightMode:checked + .main > #unreadMsg {
-	background-color: #111122;
-	color: #000000;
+input#nightMode:checked + .main  #unreadMsg {
+	background-color: #2D2D45;
+	color: #DDCA7E;
 }
-input#nightMode:checked + .main > #footer {
+input#nightMode:checked + .main  #footer {
 	color: #DDCA7E;
 }
 
