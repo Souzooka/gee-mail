@@ -1,10 +1,8 @@
 <html>
 	<head>
-		<!-- Reminder: Clicking on a message twice shouldn't decrement unread messages twice... -->
 		<meta charset="UTF-8"> 
 		<title>GeeMail E-mail Client</title>
 		<script src="js/mail-generator.js"></script>
-		<script src="js/extra.js"></script>
 		<link rel="icon" type="image/png" href="css/img/favicon-32x32.png" sizes="32x32" />
 		<link rel="icon" type="image/png" href="css/img/favicon-16x16.png" sizes="16x16" />
 		<link href="css/style.css" rel="stylesheet" media="screen">
@@ -12,20 +10,14 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-		
-
-		
-		
-		
+			
 		// Unread Messages Count
 		var initMessageCount = window.geemails.length;
 		var UnreadMessageCount = 0;
 		var loadedMsgs = 0;
 		var maxInboxSize = 25;
-		console.log(getNewMessage().date)
 		updateMsgCount();
 		initAddMessage();
-		
 		
 		function updateMsgCount() {
 			document.getElementById("unreadMsgCount").innerHTML = UnreadMessageCount.toLocaleString();
@@ -40,11 +32,6 @@
 		function decrementMsgCount() {
 			UnreadMessageCount -= 1;
 			updateMsgCount();
-		}
-		
-		function preShowHideMessage(element) {
-			var something = element;
-			alert(element);
 		}
 		
 		function initAddMessage() {
@@ -134,16 +121,13 @@
 				d.appendChild(newMessageBody);
 			}
 		}
-		
-
       };
     </script>
 	</head>
-	
 	<body>
+	
 	<label id for="nightMode">Night Mode</label>
 	<input type="checkbox" id="nightMode">
-	
 	
 	<div class="main">
 		
@@ -153,7 +137,7 @@
 		<hr/ id="headerEnd">
 		
 		<div id="mainBody">
-			<p id="unreadMsg"><strong>You have <em id="unreadMsgCount">0</em> unread message(s)!</strong></p>
+			<p id="unreadMsg">You have <span id="unreadMsgCount">0</span> unread message(s)!</p>
 						
 			<div id="msgContainer">
 			</div>
@@ -162,7 +146,7 @@
 		
 		<div id = "footer">
 			<!-- NOTE: Find way to prevent this from going up too high on page -->
-			<p><sub>Copyright 2013-2016 <a href="https://github.com/Souzooka/">Geegle</a></sub></p>
+			<p>Copyright 2013-2016 <a href="https://github.com/Souzooka/">Geegle</a></p>
 		</div>
 		
 	</div>

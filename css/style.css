@@ -34,19 +34,18 @@ body {
 	background-color: #CCCCFF;
 	font-family: Monospace;
 	font-size:120%;
+	font-weight:700;
 	margin-left:0;
 	margin-right:calc(100% - 195px);
 	position:fixed;
 	top:93px;
 }
 
-#unreadMsg em{
-	font-size:130%;	
+#unreadMsgCount{
+	font-size:130%;
+	font-style: oblique;
 }
 
-/* Frame w/ scrollbar? */
-/* at this point it's better not to have an overflow scroll due to min-width */
-/* G-mail seems to have an overflow-y for the scroll bar on a date element, which is separate from the rest of the header? */
 #msgContainer {
 	background-color: #FFFFFF;
 	left:200px;
@@ -112,16 +111,25 @@ body {
 	display:none;
 }
 
+.msgHideButton {
+	display: none;
+}
+
+.msgShowButton {
+	display: initial;
+}
+
 #footer {
-	font-size:smaller;
+	font-size:8px;
 	text-align:left;
     vertical-align:sub;
 	position:fixed;
-	bottom:-8;
+	bottom:-6px;
 }
 
 /* Night Mode */
 /* init */
+
 input#nightMode {
 	position: absolute;
 	top: -42px;
@@ -154,7 +162,6 @@ label:hover {
 }
 
 /* Switched on */
-
 input#nightMode:checked + .main > #headerImg {
 	background-image: url("img/LogoNight.png");
 }
@@ -178,9 +185,5 @@ input#nightMode:checked + .main > #unreadMsg {
 input#nightMode:checked + .main > #footer {
 	color: #DDCA7E;
 }
-
-
-
-
 
 /* Night Mode End */
