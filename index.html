@@ -12,7 +12,7 @@
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 			
 		var initMessageCount = window.geemails.length;
-		var UnreadMessageCount = 0;
+		var unreadMessageCount = 0;
 		var loadedMsgs = 0;
 		var maxInboxSize = 25;
 		var newMessage = {};
@@ -23,14 +23,14 @@
 		function updateMsgCount() {
 
 			// toLocaleString() 
-			document.getElementById("unreadMsgCount").innerHTML = UnreadMessageCount.toLocaleString();
+			document.getElementById("unreadMsgCount").innerHTML = unreadMessageCount.toLocaleString();
 
 		}
 		
 		//Increments message count variables for unread messages and messages currently in the inbox.
 		function incrementMsgCount() {
 
-			UnreadMessageCount += 1;
+			unreadMessageCount += 1;
 			loadedMsgs += 1;
 			updateMsgCount();
 
@@ -39,7 +39,7 @@
 		// Unused, decrements message count variables for unread messages.
 		function decrementMsgCount() {
 
-			UnreadMessageCount -= 1;
+			unreadMessageCount -= 1;
 			updateMsgCount();
 
 		}
@@ -85,7 +85,7 @@
 					newMessage.showButton.className = "msgButton";
 					newMessage.showButton.onclick = function () {
 						showMessage(this.id);
-					}
+					};
 					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.showButton);
 
 					//Hide Message Button
@@ -96,7 +96,7 @@
 					newMessage.hideButton.className = "msgButton";
 					newMessage.hideButton.onclick = function () {
 						hideMessage(this.id);
-					}
+					};
 					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.hideButton);
 					
 					//Subject
@@ -160,7 +160,7 @@
 				newMessage.showButton.className = "msgButton";
 				newMessage.showButton.onclick = function () {
 					showMessage(this.id);
-				}
+				};
 				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.showButton);
 
 				//Hide Message Button
@@ -171,7 +171,7 @@
 				newMessage.hideButton.className = "msgButton";
 				newMessage.hideButton.onclick = function () {
 					hideMessage(this.id);
-				}
+				};
 				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.hideButton);
 					
 				//Subject
