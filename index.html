@@ -110,19 +110,25 @@
 					newMessage.sender.className = "messageSender";
 					newMessage.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span>";
 					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.sender);
-					
+
 					//Date
 					newMessage.date = document.createElement('span');
 					newMessage.date.className = "messageDate";
-					newMessage.date.innerHTML = "Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span>" + "<br/>";
+					newMessage.date.innerHTML = "Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span>";
 					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.date);
+
+					//Linebreak
+					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('br'));
 					
 					//Body
 					newMessage.body = document.createElement('span');
 					newMessage.body.id = "messageBody" + loadedMsgs;
 					newMessage.body.className = "messageBody";
-					newMessage.body.innerHTML = "<br/>" + window.geemails[i].body + "<hr/>";
+					newMessage.body.innerHTML = "<br/>" + window.geemails[i].body;
 					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.body);
+
+					//Horizontal Line
+					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('hr'));
 
 				}
 			}
@@ -189,15 +195,21 @@
 				//Date
 				newMessage.date = document.createElement('span');
 				newMessage.date.className = "messageDate";
-				newMessage.date.innerHTML = "Date: <span class='messageDateInner'>" + getNewMessage().date + "</span>" + "<br/>";
+				newMessage.date.innerHTML = "Date: <span class='messageDateInner'>" + getNewMessage().date + "</span>";
 				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.date);
-					
+
+				//Linebreak
+				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('br'));
+
 				//Body
 				newMessage.body = document.createElement('span');
 				newMessage.body.id = "messageBody" + loadedMsgs;
 				newMessage.body.className = "messageBody";
-				newMessage.body.innerHTML = "<br/>" + getNewMessage().body + "<hr/>";
+				newMessage.body.innerHTML = "<br/>" + getNewMessage().body;
 				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.body);
+
+				//Horizontal Line
+				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('hr'));
 
 				resetInterval();
 			}
