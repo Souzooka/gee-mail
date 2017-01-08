@@ -17,11 +17,8 @@
 		var loadedMsgs = 0;
 		var maxInboxSize = 25;
 		var newElement = null;
-		var newMessage = null;
-		var newMessageSubject = null;
-		var newMessageSender = null;
-		var newMessageBody = null;
-		var newMessageDate = null;
+		var newMessage = {container:null, subject:null, sender:null, messageBody:null, messageDate:null};
+
 
 		updateMsgCount();
 		initAddMessage();
@@ -46,41 +43,41 @@
 				if (loadedMsgs < maxInboxSize) {
 					// Update inbox count
 					incrementMsgCount();
-					var newMessage = document.createElement('div');
-					newMessage.className = "message";
+					newMessage.container = document.createElement('div');
+					newMessage.container.className = "message";
 					// Create the content of the message, including classes for anything which needs specific styles.
 					//Buttons
-					newMessage.innerHTML = "<button class='msgButton' id='msgShowButton" + loadedMsgs + "'onclick='document.getElementById(&#39;messageBody" + loadedMsgs + "&#39;).style.display=&#39;inline&#39;'>Show Message</button><button class='msgButton' id='msgHideButton" + loadedMsgs + "'onclick='document.getElementById(&#39;messageBody" + loadedMsgs + "&#39;).style.display=&#39;none&#39;'>Hide Message</button>";
-					msgContainer.appendChild(newMessage);
+					newMessage.container.innerHTML = "<button class='msgButton' id='msgShowButton" + loadedMsgs + "'onclick='document.getElementById(&#39;messageBody" + loadedMsgs + "&#39;).style.display=&#39;inline&#39;'>Show Message</button><button class='msgButton' id='msgHideButton" + loadedMsgs + "'onclick='document.getElementById(&#39;messageBody" + loadedMsgs + "&#39;).style.display=&#39;none&#39;'>Hide Message</button>";
+					msgContainer.appendChild(newMessage.container);
 					
 					//Subject
-					newMessageSubject = document.createElement('span');
-					newMessageSubject.className = "messageSubject";
-					newMessageSubject.innerHTML = "Subject: <span class='messageSubjectInner'>" + window.geemails[i].subject + "</span>";
+					newMessage.subject = document.createElement('span');
+					newMessage.subject.className = "messageSubject";
+					newMessage.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" + window.geemails[i].subject + "</span>";
 					newElement = document.getElementsByClassName("message")[(loadedMsgs - 1)];
-					newElement.appendChild(newMessageSubject);
+					newElement.appendChild(newMessage.subject);
 					
 					//Sender
-					newMessageSender = document.createElement('span');
-					newMessageSender.className = "messageSender";
-					newMessageSender.innerHTML = "Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span>";
+					newMessage.sender = document.createElement('span');
+					newMessage.sender.className = "messageSender";
+					newMessage.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span>";
 					newElement = document.getElementsByClassName("message")[(loadedMsgs - 1)];
-					newElement.appendChild(newMessageSender);
+					newElement.appendChild(newMessage.sender);
 					
 					//Date
-					newMessageDate = document.createElement('span');
-					newMessageDate.className = "messageDate";
-					newMessageDate.innerHTML = "Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span>" + "<br/>";
+					newMessage.date = document.createElement('span');
+					newMessage.date.className = "messageDate";
+					newMessage.date.innerHTML = "Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span>" + "<br/>";
 					newElement = document.getElementsByClassName("message")[(loadedMsgs - 1)];
-					newElement.appendChild(newMessageDate);
+					newElement.appendChild(newMessage.date);
 					
 					//Body
-					newMessageBody = document.createElement('span');
-					newMessageBody.id = "messageBody" + loadedMsgs;
-					newMessageBody.className = "messageBody";
-					newMessageBody.innerHTML = "<br/>" + window.geemails[i].body + "<hr/>";
+					newMessage.body = document.createElement('span');
+					newMessage.body.id = "messageBody" + loadedMsgs;
+					newMessage.body.className = "messageBody";
+					newMessage.body.innerHTML = "<br/>" + window.geemails[i].body + "<hr/>";
 					newElement = document.getElementsByClassName("message")[(loadedMsgs - 1)];
-					newElement.appendChild(newMessageBody);
+					newElement.appendChild(newMessage.body);
 				}
 			}
 		}
@@ -106,33 +103,33 @@
 				msgContainer.appendChild(newMessage);
 					
 				//Subject
-				newMessageSubject = document.createElement('span');
-				newMessageSubject.className = "messageSubject";
-				newMessageSubject.innerHTML = "Subject: <span class='messageSubjectInner'>" + getNewMessage().subject + "</span>";
+				newMessage.subject = document.createElement('span');
+				newMessage.subject.className = "messageSubject";
+				newMessage.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" + getNewMessage().subject + "</span>";
 				newElement = document.getElementsByClassName("message")[(loadedMsgs - 1)];
-				newElement.appendChild(newMessageSubject);
+				newElement.appendChild(newMessage.subject);
 					
 				//Sender
-				newMessageSender = document.createElement('span');
-				newMessageSender.className = "messageSender";
-				newMessageSender.innerHTML = "Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span>";
+				newMessage.sender = document.createElement('span');
+				newMessage.sender.className = "messageSender";
+				newMessage.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span>";
 				newElement = document.getElementsByClassName("message")[(loadedMsgs - 1)];
-				newElement.appendChild(newMessageSender);
+				newElement.appendChild(newMessage.sender);
 					
 				//Date
-				newMessageDate = document.createElement('span');
-				newMessageDate.className = "messageDate";
-				newMessageDate.innerHTML = "Date: <span class='messageDateInner'>" + getNewMessage().date + "</span>" + "<br/>";
+				newMessage.date = document.createElement('span');
+				newMessage.date.className = "messageDate";
+				newMessage.date.innerHTML = "Date: <span class='messageDateInner'>" + getNewMessage().date + "</span>" + "<br/>";
 				newElement = document.getElementsByClassName("message")[(loadedMsgs - 1)];
-				newElement.appendChild(newMessageDate);
+				newElement.appendChild(newMessage.date);
 					
 				//Body
-				newMessageBody = document.createElement('span');
-				newMessageBody.id = "messageBody" + loadedMsgs;
-				newMessageBody.className = "messageBody";
-				newMessageBody.innerHTML = "<br/>" + getNewMessage().body + "<hr/>";
+				newMessage.body = document.createElement('span');
+				newMessage.body.id = "messageBody" + loadedMsgs;
+				newMessage.body.className = "messageBody";
+				newMessage.body.innerHTML = "<br/>" + getNewMessage().body + "<hr/>";
 				newElement = document.getElementsByClassName("message")[(loadedMsgs - 1)];
-				newElement.appendChild(newMessageBody);
+				newElement.appendChild(newMessage.body);
 
 				resetInterval();
 			}
