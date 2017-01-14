@@ -139,10 +139,6 @@
 					message.body.innerHTML = "<br/>" + newMessage.body;
 				}
 
-				if (loadedMsgs > initMessageCount) {
-					resetInterval();
-				}
-
 				addBuiltMessage(message);
 			}
 		}
@@ -162,6 +158,11 @@
 
 			// Update inbox count
 			incrementMsgCount();
+
+
+			if (loadedMsgs > initMessageCount) {
+				resetInterval();
+			}
 		}
 
 		//Instantly add 10(default) messages, based on windows.geemail.length
@@ -173,9 +174,11 @@
 		var interval = setInterval(initMessage, ((Math.random() * 9000) + 1000));
 
 		//Resets interval and assigns a new interval for new messages.
-		function resetInterval() {
+		function resetInterval(forceUpdate) {
 			clearInterval(interval);
-			interval = setInterval(initMessage, ((Math.random() * 9000) + 1000));
+			if ((loadedMsgs <= maxInboxSize) || forceUpdate) {
+				interval = setInterval(initMessage, ((Math.random() * 9000) + 1000));
+			}
 		}
     };
     </script>
