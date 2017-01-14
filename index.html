@@ -96,6 +96,8 @@
 					hideMessage(this.id);
 				};
 
+				var newMessage = getNewMessage();
+
 				//Subject
 				message.subject = document.createElement('span');
 				message.subject.className = "messageSubject";
@@ -103,7 +105,7 @@
 				message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" +  window.geemails[loadedMsgs].subject + "</span>";
 				}
 				else {
-				message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" +  getNewMessage().subject + "</span>";
+				message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" +  newMessage.subject + "</span>";
 				}
 				
 				//Sender
@@ -113,7 +115,7 @@
 					message.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + window.geemails[loadedMsgs].sender + "</span>";
 				}
 				else {
-					message.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span>";
+					message.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + newMessage.sender + "</span>";
 				}
 
 				//Date
@@ -123,7 +125,7 @@
 					message.date.innerHTML = "Date: <span class='messageDateInner'>" + window.geemails[loadedMsgs].date + "</span>";
 				}
 				else {
-					message.date.innerHTML = "Date: <span class='messageDateInner'>" + window.getNewMessage().date + "</span>";
+					message.date.innerHTML = "Date: <span class='messageDateInner'>" + newMessage.date + "</span>";
 				}
 
 				//Body
@@ -134,7 +136,7 @@
 					message.body.innerHTML = "<br/>" + window.geemails[loadedMsgs].body;
 				}
 				else {
-					message.body.innerHTML = "<br/>" + getNewMessage().body;
+					message.body.innerHTML = "<br/>" + newMessage.body;
 				}
 
 				if (loadedMsgs > initMessageCount) {
@@ -166,7 +168,6 @@
 		while (initMessageCount > loadedMsgs) {
 			initMessage();
 		}
-
 
 		//Initial random interval for next message after initial messages (1-10 seconds)
 		var interval = setInterval(initMessage, ((Math.random() * 9000) + 1000));
