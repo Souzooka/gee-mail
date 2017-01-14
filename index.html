@@ -58,7 +58,7 @@
 		}
 
 		//Creates a new empty message object.
-		function initMessage() {
+		function initMessage(id) {
 			var emptyMessage = {};
 			createMessage(emptyMessage);
 		}
@@ -69,6 +69,8 @@
 			// Container
 			message.container = document.createElement('div');
 			message.container.className = "message";
+
+			message.seen = false;
 			
 
 			// Create the content of the message, including classes for anything which needs specific styles.
@@ -82,6 +84,10 @@
 			message.showButton.className = "msgButton";
 			message.showButton.onclick = function () {
 				showMessage(this.id);
+				if (!message.seen) {
+					message.seen = true;
+					decrementMsgCount();
+				}
 			};
 
 			//Hide Message Button
