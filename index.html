@@ -78,9 +78,16 @@
 			message.container.className = "message";
 
 			message.seen = false;
-			
+			message.visible = false;
 
 			// Create the content of the message, including classes for anything which needs specific styles.
+
+			message.readImage = document.createElement('img');
+			message.readImage.src = "css/img/Unread.png";
+			message.readImage.id = "messageReadImage" + loadedMsgs;
+			message.readImage.classname = "messageReadImage";
+			message.readImage.innerHTML = "";
+			message.readImage.height = 18;
 
 			//Buttons
 			//Show Message Button
@@ -90,21 +97,21 @@
 			message.showButton.id = "msgShowButton" + loadedMsgs;
 			message.showButton.className = "msgButton";
 			message.showButton.onclick = function () {
-				showMessage(this.id);
+				if (!message.visible) {
+					showMessage(this.id);
+					message.visible = true;
+					message.showButton.innerHTML = "Hide Message";
+				}
+				else {
+					hideMessage(this.id);
+					message.visible = false;
+					message.showButton.innerHTML = "Show Message";
+				}
 				if (!message.seen) {
 					message.seen = true;
+					message.readImage.src = "css/img/Read.png";
 					decrementMsgCount();
 				}
-			};
-
-			//Hide Message Button
-			message.hideButton = document.createElement('button');
-			message.hideButton.innerHTML = "Hide Message";
-			message.hideButton.type = "button";
-			message.hideButton.id = "msgHideButton" + loadedMsgs;
-			message.hideButton.className = "msgButton";
-			message.hideButton.onclick = function () {
-				hideMessage(this.id);
 			};
 
 			var newMessage = getNewMessage();
@@ -144,10 +151,10 @@
 			message.body.id = "messageBody" + loadedMsgs;
 			message.body.className = "messageBody";
 			if (initMessageCount > loadedMsgs) {
-				message.body.innerHTML = "<br/>" + window.geemails[loadedMsgs].body;
+				message.body.innerHTML = "<br/>" + "<br/>" + window.geemails[loadedMsgs].body;
 			}
 			else {
-				message.body.innerHTML = "<br/>" + newMessage.body;
+				message.body.innerHTML = "<br/>" + "<br/>" + newMessage.body;
 			}
 
 			addBuiltMessage(message);
@@ -157,12 +164,12 @@
 		function addBuiltMessage(builtMessage) {
 
 			msgContainer.appendChild(builtMessage.container);
+			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.readImage);
 			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.showButton);
-			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.hideButton);
+
 			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.subject);
 			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.sender);
 			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.date);
-			document.getElementsByClassName("message")[loadedMsgs].appendChild(document.createElement('br'));
 			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.body);
 			document.getElementsByClassName("message")[loadedMsgs].appendChild(document.createElement('hr'));
 

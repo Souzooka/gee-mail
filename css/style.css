@@ -64,19 +64,25 @@ body {
 	font: 14px/25px Helvetica, Arial, sans-serif;
 }
 
+.messageReadImage {
+	height:18;
+}
+
 .messageSubject {
-	position:absolute;
+	position:relative;
 	min-width:280px;
 	max-width:280px;
 	padding-left:5px;
+	left:120px;
 	overflow:hidden;
 	font-weight:bold;
 }
 
 .messageSubjectInner {
-	position:absolute;
+	position:relative;
 	padding-left:5px;
 	font-weight:normal;
+	min-width:500px;
 }
 
 .messageSender {
@@ -111,12 +117,11 @@ body {
 	display:none;
 }
 
-.msgHideButton {
-	display: none;
-}
-
-.msgShowButton {
+.msgButton {
 	display: initial;
+	min-width:110px;
+	position:absolute;
+	left:10;
 }
 
 #footer {
