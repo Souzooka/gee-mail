@@ -103,7 +103,6 @@
 				//Subject
 				message.subject = document.createElement('span');
 				message.subject.className = "messageSubject";
-				/*message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" + (initMessageCount > (loadedMsgs)) ? window.geemails[loadedMsgs].subject : getNewMessage().subject + "</span>";*/
 				if (initMessageCount > loadedMsgs) {
 				message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" +  window.geemails[loadedMsgs].subject + "</span>";
 				}
