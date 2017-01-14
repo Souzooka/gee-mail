@@ -14,7 +14,7 @@
 		var initMessageCount = window.geemails.length;
 		var unreadMessageCount = 0;
 		var loadedMsgs = 0;
-		var maxInboxSize = 25;
+		var maxInboxSize = 12;
 		
 		//Changes inbox count when messages are read(unimplemented) or added.
 		function updateMsgCount() {
@@ -66,81 +66,78 @@
 		//Adds properties to message object.
 		function createMessage(message) {
 
-			if (loadedMsgs < maxInboxSize) {
+			// Container
+			message.container = document.createElement('div');
+			message.container.className = "message";
+			
 
-				// Container
-				message.container = document.createElement('div');
-				message.container.className = "message";
-				
+			// Create the content of the message, including classes for anything which needs specific styles.
 
-				// Create the content of the message, including classes for anything which needs specific styles.
+			//Buttons
+			//Show Message Button
+			message.showButton = document.createElement('button');
+			message.showButton.innerHTML = "Show Message";
+			message.showButton.type = "button";
+			message.showButton.id = "msgShowButton" + loadedMsgs;
+			message.showButton.className = "msgButton";
+			message.showButton.onclick = function () {
+				showMessage(this.id);
+			};
 
-				//Buttons
-				//Show Message Button
-				message.showButton = document.createElement('button');
-				message.showButton.innerHTML = "Show Message";
-				message.showButton.type = "button";
-				message.showButton.id = "msgShowButton" + loadedMsgs;
-				message.showButton.className = "msgButton";
-				message.showButton.onclick = function () {
-					showMessage(this.id);
-				};
+			//Hide Message Button
+			message.hideButton = document.createElement('button');
+			message.hideButton.innerHTML = "Hide Message";
+			message.hideButton.type = "button";
+			message.hideButton.id = "msgHideButton" + loadedMsgs;
+			message.hideButton.className = "msgButton";
+			message.hideButton.onclick = function () {
+				hideMessage(this.id);
+			};
 
-				//Hide Message Button
-				message.hideButton = document.createElement('button');
-				message.hideButton.innerHTML = "Hide Message";
-				message.hideButton.type = "button";
-				message.hideButton.id = "msgHideButton" + loadedMsgs;
-				message.hideButton.className = "msgButton";
-				message.hideButton.onclick = function () {
-					hideMessage(this.id);
-				};
+			var newMessage = getNewMessage();
 
-				var newMessage = getNewMessage();
-
-				//Subject
-				message.subject = document.createElement('span');
-				message.subject.className = "messageSubject";
-				if (initMessageCount > loadedMsgs) {
-				message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" +  window.geemails[loadedMsgs].subject + "</span>";
-				}
-				else {
-				message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" +  newMessage.subject + "</span>";
-				}
-				
-				//Sender
-				message.sender = document.createElement('span');
-				message.sender.className = "messageSender";
-				if (initMessageCount > loadedMsgs) {
-					message.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + window.geemails[loadedMsgs].sender + "</span>";
-				}
-				else {
-					message.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + newMessage.sender + "</span>";
-				}
-
-				//Date
-				message.date = document.createElement('span');
-				message.date.className = "messageDate";
-				if (initMessageCount > loadedMsgs) {
-					message.date.innerHTML = "Date: <span class='messageDateInner'>" + window.geemails[loadedMsgs].date + "</span>";
-				}
-				else {
-					message.date.innerHTML = "Date: <span class='messageDateInner'>" + newMessage.date + "</span>";
-				}
-
-				//Body
-				message.body = document.createElement('span');
-				message.body.id = "messageBody" + loadedMsgs;
-				message.body.className = "messageBody";
-				if (initMessageCount > loadedMsgs) {
-					message.body.innerHTML = "<br/>" + window.geemails[loadedMsgs].body;
-				}
-				else {
-					message.body.innerHTML = "<br/>" + newMessage.body;
-				}
-
-				addBuiltMessage(message);
+			//Subject
+			message.subject = document.createElement('span');
+			message.subject.className = "messageSubject";
+			if (initMessageCount > loadedMsgs) {
+			message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" +  window.geemails[loadedMsgs].subject + "</span>";
 			}
+			else {
+			message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" +  newMessage.subject + "</span>";
+			}
+			
+			//Sender
+			message.sender = document.createElement('span');
+			message.sender.className = "messageSender";
+			if (initMessageCount > loadedMsgs) {
+				message.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + window.geemails[loadedMsgs].sender + "</span>";
+			}
+			else {
+				message.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + newMessage.sender + "</span>";
+			}
+
+			//Date
+			message.date = document.createElement('span');
+			message.date.className = "messageDate";
+			if (initMessageCount > loadedMsgs) {
+				message.date.innerHTML = "Date: <span class='messageDateInner'>" + window.geemails[loadedMsgs].date + "</span>";
+			}
+			else {
+				message.date.innerHTML = "Date: <span class='messageDateInner'>" + newMessage.date + "</span>";
+			}
+
+			//Body
+			message.body = document.createElement('span');
+			message.body.id = "messageBody" + loadedMsgs;
+			message.body.className = "messageBody";
+			if (initMessageCount > loadedMsgs) {
+				message.body.innerHTML = "<br/>" + window.geemails[loadedMsgs].body;
+			}
+			else {
+				message.body.innerHTML = "<br/>" + newMessage.body;
+			}
+
+			addBuiltMessage(message);
 		}
 	
 		//Puts the message object, now with properties, onto the webpage (also calls incrementMsgCount())
@@ -176,7 +173,7 @@
 		//Resets interval and assigns a new interval for new messages.
 		function resetInterval(forceUpdate) {
 			clearInterval(interval);
-			if ((loadedMsgs <= maxInboxSize) || forceUpdate) {
+			if ((loadedMsgs < maxInboxSize) || forceUpdate) {
 				interval = setInterval(initMessage, ((Math.random() * 9000) + 1000));
 			}
 		}
