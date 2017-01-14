@@ -153,19 +153,18 @@
 		//Puts the message object, now with properties, onto the webpage (also calls incrementMsgCount())
 		function addBuiltMessage(builtMessage) {
 
+			msgContainer.appendChild(builtMessage.container);
+			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.showButton);
+			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.hideButton);
+			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.subject);
+			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.sender);
+			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.date);
+			document.getElementsByClassName("message")[loadedMsgs].appendChild(document.createElement('br'));
+			document.getElementsByClassName("message")[loadedMsgs].appendChild(builtMessage.body);
+			document.getElementsByClassName("message")[loadedMsgs].appendChild(document.createElement('hr'));
+
 			// Update inbox count
 			incrementMsgCount();
-
-			msgContainer.appendChild(builtMessage.container);
-			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.showButton);
-			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.hideButton);
-			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.subject);
-			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.sender);
-			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.date);
-			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('br'));
-			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.body);
-			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('hr'));
-
 		}
 
 		//Instantly add 10(default) messages, based on windows.geemail.length
