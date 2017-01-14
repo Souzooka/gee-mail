@@ -21,6 +21,7 @@
 
 			// toLocaleString() 
 			document.getElementById("unreadMsgCount").innerHTML = unreadMessageCount.toLocaleString();
+			document.getElementById("loadedMsgs").innerHTML = (" (" + loadedMsgs.toLocaleString() + ")");
 
 		}
 		
@@ -199,7 +200,7 @@
 		<hr/ id="headerEnd">
 		
 		<div id="mainBody">
-			<p id="unreadMsg">You have <span id="unreadMsgCount">0</span> unread message(s)!</p>
+			<p id="unreadMsg">You have <span id="unreadMsgCount">0</span><span id="loadedMsgs"> (0)</span> unread message(s)!</p>
 						
 			<div id="msgContainer">
 			</div>
