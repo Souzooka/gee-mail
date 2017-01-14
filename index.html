@@ -15,9 +15,6 @@
 		var unreadMessageCount = 0;
 		var loadedMsgs = 0;
 		var maxInboxSize = 25;
-		var newMessage = {};
-
-		initAddMessage();
 		
 		//Changes inbox count when messages are read(unimplemented) or added.
 		function updateMsgCount() {
@@ -61,158 +58,126 @@
 		}
 
 		//Adds initial messages (10 by default, determined by window.geemails.length)
-		function initAddMessage() {
+		function addBuiltMessage(builtMessage) {
 
-			for(var i = 0; i < initMessageCount; i++){
+			// Update inbox count
+			incrementMsgCount();
 
-				if (loadedMsgs < maxInboxSize) {
+			msgContainer.appendChild(builtMessage.container);
+			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.showButton);
+			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.hideButton);
+			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.subject);
+			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.sender);
+			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.date);
+			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('br'));
+			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(builtMessage.body);
+			document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('hr'));
 
-					// Update inbox count
-					incrementMsgCount();
-
-					newMessage.container = document.createElement('div');
-					newMessage.container.className = "message";
-					msgContainer.appendChild(newMessage.container);
-
-					// Create the content of the message, including classes for anything which needs specific styles.
-
-					//Buttons
-					//Show Message Button
-					newMessage.showButton = document.createElement('button');
-					newMessage.showButton.innerHTML = "Show Message";
-					newMessage.showButton.type = "button";
-					newMessage.showButton.id = "msgShowButton" + loadedMsgs;
-					newMessage.showButton.className = "msgButton";
-					newMessage.showButton.onclick = function () {
-						showMessage(this.id);
-					};
-					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.showButton);
-
-					//Hide Message Button
-					newMessage.hideButton = document.createElement('button');
-					newMessage.hideButton.innerHTML = "Hide Message";
-					newMessage.hideButton.type = "button";
-					newMessage.hideButton.id = "msgHideButton" + loadedMsgs;
-					newMessage.hideButton.className = "msgButton";
-					newMessage.hideButton.onclick = function () {
-						hideMessage(this.id);
-					};
-					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.hideButton);
-					
-					//Subject
-					newMessage.subject = document.createElement('span');
-					newMessage.subject.className = "messageSubject";
-					newMessage.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" + window.geemails[i].subject + "</span>";
-					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.subject);
-					
-					//Sender
-					newMessage.sender = document.createElement('span');
-					newMessage.sender.className = "messageSender";
-					newMessage.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + window.geemails[i].sender + "</span>";
-					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.sender);
-
-					//Date
-					newMessage.date = document.createElement('span');
-					newMessage.date.className = "messageDate";
-					newMessage.date.innerHTML = "Date: <span class='messageDateInner'>" + window.geemails[i].date + "</span>";
-					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.date);
-
-					//Linebreak
-					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('br'));
-					
-					//Body
-					newMessage.body = document.createElement('span');
-					newMessage.body.id = "messageBody" + loadedMsgs;
-					newMessage.body.className = "messageBody";
-					newMessage.body.innerHTML = "<br/>" + window.geemails[i].body;
-					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.body);
-
-					//Horizontal Line
-					document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('hr'));
-
-				}
-			}
 		}
 
+		function initMessage() {
+			var emptyMessage = {};
+			createMessage(emptyMessage);
+		}
+
+		function createMessage(message) {
+
+			if (loadedMsgs < maxInboxSize) {
+
+				// Container
+				message.container = document.createElement('div');
+				message.container.className = "message";
+				
+
+				// Create the content of the message, including classes for anything which needs specific styles.
+
+				//Buttons
+				//Show Message Button
+				message.showButton = document.createElement('button');
+				message.showButton.innerHTML = "Show Message";
+				message.showButton.type = "button";
+				message.showButton.id = "msgShowButton" + loadedMsgs;
+				message.showButton.className = "msgButton";
+				message.showButton.onclick = function () {
+					showMessage(this.id);
+				};
+
+				//Hide Message Button
+				message.hideButton = document.createElement('button');
+				message.hideButton.innerHTML = "Hide Message";
+				message.hideButton.type = "button";
+				message.hideButton.id = "msgHideButton" + loadedMsgs;
+				message.hideButton.className = "msgButton";
+				message.hideButton.onclick = function () {
+					hideMessage(this.id);
+				};
+				
+				console.log(loadedMsgs);
+				console.log(initMessageCount);
+				console.log(initMessageCount > loadedMsgs);
+
+				//Subject
+				message.subject = document.createElement('span');
+				message.subject.className = "messageSubject";
+				/*message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" + (initMessageCount > (loadedMsgs)) ? window.geemails[loadedMsgs].subject : getNewMessage().subject + "</span>";*/
+				if (initMessageCount > loadedMsgs) {
+				message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" +  window.geemails[loadedMsgs].subject + "</span>";
+				}
+				else {
+				message.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" +  getNewMessage().subject + "</span>";
+				}
+				
+				//Sender
+				message.sender = document.createElement('span');
+				message.sender.className = "messageSender";
+				if (initMessageCount > loadedMsgs) {
+					message.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + window.geemails[loadedMsgs].sender + "</span>";
+				}
+				else {
+					message.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span>";
+				}
+
+				//Date
+				message.date = document.createElement('span');
+				message.date.className = "messageDate";
+				if (initMessageCount > loadedMsgs) {
+					message.date.innerHTML = "Date: <span class='messageDateInner'>" + window.geemails[loadedMsgs].date + "</span>";
+				}
+				else {
+					message.date.innerHTML = "Date: <span class='messageDateInner'>" + window.getNewMessage().date + "</span>";
+				}
+
+				//Body
+				message.body = document.createElement('span');
+				message.body.id = "messageBody" + loadedMsgs;
+				message.body.className = "messageBody";
+				if (initMessageCount > loadedMsgs) {
+					message.body.innerHTML = "<br/>" + window.geemails[loadedMsgs].body;
+				}
+				else {
+					message.body.innerHTML = "<br/>" + getNewMessage().body;
+				}
+
+				if (loadedMsgs > initMessageCount) {
+					resetInterval();
+				}
+
+				addBuiltMessage(message);
+			}
+		}
+	
+		while (initMessageCount > loadedMsgs) {
+			initMessage();
+		}
+
+
 		//Initial random interval for next message after initial messages (1-10 seconds)
-		var interval = setInterval(addMessage, ((Math.random() * 9000) + 1000));
+		var interval = setInterval(initMessage, ((Math.random() * 9000) + 1000));
 
 		//Resets interval and assigns a new interval for new messages.
 		function resetInterval() {
 			clearInterval(interval);
-			interval = setInterval(addMessage, ((Math.random() * 9000) + 1000));
-		}
-
-		//Adds messages at a psuedorandom interval (1 to 10 seconds), reset each time every time the function is run.
-		function addMessage() {
-
-			if (loadedMsgs < maxInboxSize) {
-
-				//Update inbox count
-				incrementMsgCount();
-
-				newMessage.container = document.createElement('div');
-				newMessage.container.className = "message";
-				msgContainer.appendChild(newMessage.container);
-
-				//Create the content of the message, including classes for anything which needs specific styles.
-
-				//Buttons
-				//Show Message Button
-				newMessage.showButton = document.createElement('button');
-				newMessage.showButton.innerHTML = "Show Message";
-				newMessage.showButton.type = "button";
-				newMessage.showButton.id = "msgShowButton" + loadedMsgs;
-				newMessage.showButton.className = "msgButton";
-				newMessage.showButton.onclick = function () {
-					showMessage(this.id);
-				};
-				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.showButton);
-
-				//Hide Message Button
-				newMessage.hideButton = document.createElement('button');
-				newMessage.hideButton.innerHTML = "Hide Message";
-				newMessage.hideButton.type = "button";
-				newMessage.hideButton.id = "msgHideButton" + loadedMsgs;
-				newMessage.hideButton.className = "msgButton";
-				newMessage.hideButton.onclick = function () {
-					hideMessage(this.id);
-				};
-				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.hideButton);
-					
-				//Subject
-				newMessage.subject = document.createElement('span');
-				newMessage.subject.className = "messageSubject";
-				newMessage.subject.innerHTML = "Subject: <span class='messageSubjectInner'>" + getNewMessage().subject + "</span>";
-				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.subject);
-					
-				//Sender
-				newMessage.sender = document.createElement('span');
-				newMessage.sender.className = "messageSender";
-				newMessage.sender.innerHTML = "Sender: <span class='messageSenderInner'>" + getNewMessage().sender + "</span>";
-				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.sender);
-					
-				//Date
-				newMessage.date = document.createElement('span');
-				newMessage.date.className = "messageDate";
-				newMessage.date.innerHTML = "Date: <span class='messageDateInner'>" + getNewMessage().date + "</span>";
-				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.date);
-
-				//Linebreak
-				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('br'));
-
-				//Body
-				newMessage.body = document.createElement('span');
-				newMessage.body.id = "messageBody" + loadedMsgs;
-				newMessage.body.className = "messageBody";
-				newMessage.body.innerHTML = "<br/>" + getNewMessage().body;
-				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(newMessage.body);
-
-				//Horizontal Line
-				document.getElementsByClassName("message")[(loadedMsgs - 1)].appendChild(document.createElement('hr'));
-
-				resetInterval();
-			}
+			interval = setInterval(initMessage, ((Math.random() * 9000) + 1000));
 		}
     };
     </script>
