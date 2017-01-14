@@ -80,7 +80,6 @@ body {
 
 .messageSubjectInner {
 	position:relative;
-	padding-left:5px;
 	font-weight:normal;
 	min-width:500px;
 }
